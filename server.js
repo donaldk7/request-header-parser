@@ -10,7 +10,7 @@ app.get('/', function(req, res){
                     '"Software": "' + json["user-agent"] + '"}';
     
     
-    res.end(browserInfo);
+    res.send(browserInfo);
 
 });
 
