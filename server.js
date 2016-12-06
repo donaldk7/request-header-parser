@@ -2,23 +2,22 @@ var express = require('express')
 var app = express()
 
 app.get('/', function(req, res){
-  var ipaddress = req.get('x-forwarded-for')
-  var lang = req.get('accept-language')
-  var software = req.get('user-agent')
-   // var str = JSON.stringify(req.headers)  
-    //var json = JSON.parse(str)
-    //var browserInfo = ''
-    //browserInfo = '{"IP Address": "' + json["x-forwarded-for"] + '", ' + 
-     //               '"Language": "' + json["accept-language"].substring(0,5) + '", ' +
-     //               '"Software": "' + json["user-agent"] + '"}'
+//  var ipaddress = req.get('x-forwarded-for');   alternative usage
+
+    var str = JSON.stringify(req.headers)  
+    var json = JSON.parse(str)
+    var browserInfo = ''
+    browserInfo = '{"IP Address": "' + json["x-forwarded-for"] + '", ' + 
+                    '"Language": "' + json["accept-language"].substring(0,5) + '", ' +
+                    '"Software": "' + json["user-agent"] + '"}'
     
     
-    //res.send(browserInfo)
-    res.send(ipaddress + lang + software)
+    res.send(browserInfo)
 
-})
+});
 
-app.listen(process.env.PORT || 8080, function(req, res) {
+app.listen(process.env.PORT || 8080, function() {
   console.log('Request Header Parser')
 })
+
 
